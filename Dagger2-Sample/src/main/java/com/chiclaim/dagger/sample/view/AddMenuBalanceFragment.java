@@ -37,7 +37,6 @@ public class AddMenuBalanceFragment extends Fragment implements IAddMenuBalanceV
                 .addMenuBalancePresenterModule(new AddMenuBalancePresenterModule("Chiclaim","湘菜", this))
                 .build()
                 .inject(this);//完成注入
-
     }
 
     @Nullable
