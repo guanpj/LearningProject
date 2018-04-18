@@ -60,7 +60,9 @@ public class MainFragment extends BaseFragment implements MainPresenter.IUserVie
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         if(getActivity() instanceof MainActivity){
-            mainFragmentComponent = ((MainActivity)getActivity() ).getMainComponent().mainFragmentComponent();
+            mainFragmentComponent = ((MainActivity)getActivity())
+                    .getMainComponent()
+                    .mainFragmentComponent();
             mainFragmentComponent.inject(this);
             mainPresenter.setUserView(this);
         }
@@ -75,7 +77,6 @@ public class MainFragment extends BaseFragment implements MainPresenter.IUserVie
         view.findViewById(R.id.get_user).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 mainPresenter.getUser();
             }
         });
