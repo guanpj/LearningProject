@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context="guanpj.me.com.customview.MainActivity">
+
+    <guanpj.me.com.customview.CustomVolumControlBar
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:visibility="gone"
+        app:bg="@mipmap/icon"
+        app:circleWidth="5dp"
+        app:dotCount="20"
+        app:firstColor="@android:color/holo_green_dark"
+        app:secondColor="@android:color/holo_blue_dark"
+        app:splitSize="10"/>
+
+    <TextView
+        android:text="Hello Jie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <guanpj.me.com.customview.custom.MyView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#ff0000"
+        app:back_color="@android:color/holo_green_dark"
+        app:text_color="@android:color/black"
+        app:text_size="20sp"/>
+
+</LinearLayout>

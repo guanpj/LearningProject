@@ -1,0 +1,2 @@
+include ':dynamicproxy', ':JniTest', ':BinderTest', ':drawtest', ':JApp', ':JFramework', ':MVP-Sample', ':MVVM-Sample', ':JSample', ':HandlerTest', ':CustomView', ':Dagger2Sample', ':Dagger2-Sample'
+include ':PhotoWallFalls'

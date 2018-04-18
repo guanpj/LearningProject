@@ -1,0 +1,52 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        applicationId "com.pfh.app_mvp"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.1.0'
+    testCompile 'junit:junit:4.12'
+
+    Map<java.lang.String,java.lang.String> dependencies = rootProject.ext.dependencies;
+
+    compile dependencies.appCompat
+    compile dependencies.cardView
+    compile dependencies.recyclerView
+    compile dependencies.retrofit
+    compile dependencies.retrofitConverterGson
+    compile dependencies.retrofitAdapterRxJava
+    compile dependencies.okhttp
+    compile dependencies.okhttpLoggingInterceptor
+    compile dependencies.picasso
+    compile dependencies.rxAndroid
+    compile dependencies.circleImageView
+    compile dependencies.butterknife
+    annotationProcessor dependencies.butterknife_compiler
+
+    testCompile dependencies.jUnit
+    testCompile dependencies.mockito
+    testCompile dependencies.robolectric
+}
