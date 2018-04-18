@@ -24,10 +24,8 @@ public class AddMenuBalanceFragment extends Fragment implements IAddMenuBalanceV
 
     private ProgressDialog dialog;
     private TextView tvMenuBalanceList;
-
     @Inject
     AddMenuBalancePresenter presenter;
-
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
