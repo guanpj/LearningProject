@@ -5,8 +5,6 @@ package com.longrise.jie.myapplication;
  */
 // Declare any non-default types here with import statements
 
-import android.os.RemoteException;
-
 public interface IMyAidlInterface extends android.os.IInterface {
     /**
      * Local-side IPC implementation mLocalStub class.
@@ -41,7 +39,7 @@ public interface IMyAidlInterface extends android.os.IInterface {
             return this;
         }
 
-        @Override
+        /*@Override
         public int add(int a, int b) throws RemoteException {
             return 5 * a + 5 * b;
         }
@@ -49,7 +47,7 @@ public interface IMyAidlInterface extends android.os.IInterface {
         @Override
         public void basicTypes(int anInt, long aLong, boolean aBoolean, float aFloat, double aDouble, String aString) throws RemoteException {
 
-        }
+        }*/
 
         @Override
         public boolean onTransact(int code, android.os.Parcel data, android.os.Parcel reply, int flags) throws android.os.RemoteException {

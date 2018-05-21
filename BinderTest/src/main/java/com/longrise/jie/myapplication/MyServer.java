@@ -34,6 +34,19 @@ public class MyServer extends Service {
         }
     };
 
+    class MyStub extends IMyAidlInterface.Stub {
+
+        @Override
+        public void basicTypes(int anInt, long aLong, boolean aBoolean, float aFloat, double aDouble, String aString) throws RemoteException {
+
+        }
+
+        @Override
+        public int add(int a, int b) throws RemoteException {
+            return 2 * a + 2 * b;
+        }
+    }
+
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
