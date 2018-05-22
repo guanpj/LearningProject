@@ -16,11 +16,10 @@ public class ClipHelper {
             Method getServiceMethod = serviceMangerClass.getDeclaredMethod("getService", String.class);
             //3.通过这个方法，拿到原本的系统服务代理对象
             IBinder binder = (IBinder) getServiceMethod.invoke(null, "clipboard");
+            MyClipProxy myClipProxy = new MyClipProxy(binder);
             //4.我们通过这个对象，创建我们自己的代理对象，瞒天过海骗过系统
-            IBinder myBinder = (IBinder) Proxy.newProxyInstance(serviceMangerClass.getClassLoader(),
-                    binder.getClass().getInterfaces()
-                    , new MyClipProxy(binder)
-            );
+            IBinder myBinder = (IBinder) Proxy.newProxyInstance(myClipProxy.getClass().getClassLoader(),
+                    binder.getClass().getInterfaces(), myClipProxy);
             //5.拿到ServiceManager中的数组
             Field field = serviceMangerClass.getDeclaredField("sCache");
             field.setAccessible(true);

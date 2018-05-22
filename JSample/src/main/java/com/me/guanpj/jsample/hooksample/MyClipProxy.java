@@ -32,10 +32,10 @@ public class MyClipProxy implements InvocationHandler {
             Class<?> mStubClass = Class.forName("android.content.IClipboard$Stub");
             //2.在拿到IClipboard本地对象类
             Class<?> mIClipboard = Class.forName("android.content.IClipboard");
+            MyClip myClip = new MyClip(mBase, mStubClass);
             //3.创建我们自己的代理
-            return Proxy.newProxyInstance(mStubClass.getClassLoader(),
-                    new Class[]{mIClipboard},
-                    new MyClip(mBase, mStubClass));
+            return Proxy.newProxyInstance(myClip.getClass().getClassLoader(),
+                    new Class[]{mIClipboard}, myClip);
         }
         //不是这个方法还是返回原系统的执行
         return method.invoke(mBase,args);
