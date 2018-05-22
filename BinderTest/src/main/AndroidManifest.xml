@@ -18,7 +18,7 @@
 
         <!--<service android:name=".MyServer">
             <intent-filter>
-                <action android:name="com.longrise.jie.myapplication"/>
+                <action android:name="com.longrise.jie.myapplication" />
             </intent-filter>
         </service>-->
 

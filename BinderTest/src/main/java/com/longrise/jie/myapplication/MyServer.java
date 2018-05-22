@@ -4,35 +4,12 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 import android.os.RemoteException;
-import android.support.annotation.Nullable;
+import android.util.Log;
 
 /**
  * Created by Jie on 2016-7-26.
  */
 public class MyServer extends Service {
-    IAidlInterface.Stub mStub = new IAidlInterface.Stub() {
-        @Override
-        public void basicTypes(int anInt, long aLong, boolean aBoolean, float aFloat, double aDouble, String aString) throws RemoteException {
-
-        }
-
-        @Override
-        public int add(int a, int b) throws RemoteException {
-            return a + b;
-        }
-    };
-
-    IMyAidlInterface.Stub mMyStub = new IMyAidlInterface.Stub() {
-        @Override
-        public void basicTypes(int anInt, long aLong, boolean aBoolean, float aFloat, double aDouble, String aString) throws RemoteException {
-
-        }
-
-        @Override
-        public int add(int a, int b) throws RemoteException {
-            return 2 * a + 2 * b;
-        }
-    };
 
     class MyStub extends IMyAidlInterface.Stub {
 
@@ -43,19 +20,16 @@ public class MyServer extends Service {
 
         @Override
         public int add(int a, int b) throws RemoteException {
+            Log.e("gpj", "线程：" + Thread.currentThread().getName() + "————" + "MyServer执行add");
             return 2 * a + 2 * b;
         }
     }
 
-    @Nullable
+    private MyStub mStub = new MyStub();
+
     @Override
     public IBinder onBind(Intent intent) {
-        int action = intent.getIntExtra("action", 1);
-        if (action == 1) {
-            return mMyStub;
-        } else if (action == 2) {
-            return mStub;
-        }
-        return null;
+        Log.e("gpj", "线程：" + Thread.currentThread().getName() + "————" + "返回Stub");
+        return mStub;
     }
 }

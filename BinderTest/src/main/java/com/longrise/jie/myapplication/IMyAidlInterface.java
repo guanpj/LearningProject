@@ -5,6 +5,8 @@ package com.longrise.jie.myapplication;
  */
 // Declare any non-default types here with import statements
 
+import android.util.Log;
+
 public interface IMyAidlInterface extends android.os.IInterface {
     /**
      * Local-side IPC implementation mLocalStub class.
@@ -29,8 +31,10 @@ public interface IMyAidlInterface extends android.os.IInterface {
             }
             android.os.IInterface iin = obj.queryLocalInterface(DESCRIPTOR);
             if (((iin != null) && (iin instanceof IMyAidlInterface))) {
+                Log.e("gpj", "线程：" + Thread.currentThread().getName() + "————" + "返回本地对象");
                 return ((IMyAidlInterface) iin);
             }
+            Log.e("gpj", "线程：" + Thread.currentThread().getName() + "————" + "返回远程对象");
             return new IMyAidlInterface.Stub.Proxy(obj);
         }
 
@@ -75,6 +79,7 @@ public interface IMyAidlInterface extends android.os.IInterface {
                     return true;
                 }
                 case TRANSACTION_add: {
+                    Log.e("gpj", "线程：" + Thread.currentThread().getName() + "————" + "在binder线程执行 add");
                     data.enforceInterface(DESCRIPTOR);
                     int _arg0;
                     _arg0 = data.readInt();
@@ -138,6 +143,7 @@ public interface IMyAidlInterface extends android.os.IInterface {
                     _data.writeInterfaceToken(DESCRIPTOR);
                     _data.writeInt(a);
                     _data.writeInt(b);
+                    Log.e("gpj", "线程：" + Thread.currentThread().getName() + "————" + "调用binder开始通讯");
                     mRemote.transact(Stub.TRANSACTION_add, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.readInt();

@@ -1,4 +1,4 @@
-package com.me.guanpj.jsample.dagger;
+package com.me.guanpj.jsample.dagger2sample.dagger;
 
 import dagger.Module;
 import dagger.Provides;
