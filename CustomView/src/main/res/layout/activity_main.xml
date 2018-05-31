@@ -25,6 +25,7 @@
         android:layout_height="wrap_content" />
 
     <guanpj.me.com.customview.custom.MyView
+        android:padding="50dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#ff0000"

@@ -59,8 +59,6 @@ public class MyView extends View {
         mImageBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.icon);
 
         mPaint = new Paint();
-        mPaint.setAntiAlias(true);
-        mPaint.setTextSize(textSize);
         mRect = new Rect();
         mTextRect = new Rect();
         mText = 1l;
@@ -110,26 +108,44 @@ public class MyView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+
+        mPaint.setStrokeWidth(4);
+        mPaint.setStyle(Paint.Style.STROKE);
+        mPaint.setColor(Color.CYAN);
+        mPaint.setAntiAlias(true);
+        canvas.drawRect(0, 0, getMeasuredWidth(), getMeasuredHeight(), mPaint);
+
         int r = getMeasuredWidth() / 2;//也可以是getMeasuredHeight()/2,本例中我们已经将宽高设置相等了
         //圆心的横坐标为当前的View的左边起始位置+半径
         int centerX = getMeasuredWidth() / 2;
         //圆心的纵坐标为当前的View的顶部起始位置+半径
         int centerY = getMeasuredHeight() / 2;
 
+        mPaint.reset();
         mPaint.setColor(backColor);
+        mPaint.setAntiAlias(true);
         canvas.drawCircle(centerX, centerY, r, mPaint);
 
-        mRect.left = (int) (r - Math.sqrt(2) * 1.0f / 2 * r);
+        /*mRect.left = (int) (r - Math.sqrt(2) * 1.0f / 2 * r);
         mRect.top = (int) (r - Math.sqrt(2) * 1.0f / 2 * r);
         mRect.right = (int) (mRect.left + Math.sqrt(2) * r);
-        mRect.bottom = (int) (mRect.left + Math.sqrt(2) * r);
+        mRect.bottom = (int) (mRect.left + Math.sqrt(2) * r);*/
+
+        mRect.left = getPaddingLeft();
+        mRect.right = mWidth - getPaddingRight();
+        mRect.top = getPaddingTop();
+        mRect.bottom = mHeight - getPaddingBottom();
 
         mImageRect = new Rect(mRect.left + mRect.width()/4, mRect.top + mRect.height()/2,
                 mRect.right - mRect.width()/4, mRect.bottom);
-
+        mPaint.reset();
+        mPaint.setAntiAlias(true);
         canvas.drawBitmap(mImageBitmap,null, mImageRect, mPaint);
 
+        mPaint.reset();
         mPaint.setColor(textColor);
+        mPaint.setAntiAlias(true);
+        mPaint.setTextSize(textSize);
         if(mTextRect.width() > mImageRect.width()) {
             TextPaint paint = new TextPaint(mPaint);
             String textStr = TextUtils.ellipsize(mText.toString(), paint, mImageRect.width(),
