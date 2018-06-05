@@ -7,9 +7,16 @@ import dagger.Module;
  */
 
 @Module
-public class ShoppingCartModel {
+public class UserBean {
     private String name = "jie";
-    private int total = 100;
+    private int age = 25;
+
+    public UserBean(){}
+
+    public UserBean(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
 
     public String getName() {
         return name;
@@ -19,11 +26,11 @@ public class ShoppingCartModel {
         this.name = name;
     }
 
-    public int getTotal() {
-        return total;
+    public int getAge() {
+        return age;
     }
 
-    public void setTotal(int total) {
-        this.total = total;
+    public void setAge(int age) {
+        this.age = age;
     }
 }

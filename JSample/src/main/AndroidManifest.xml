@@ -27,14 +27,15 @@
         </activity>
 
         <activity android:name=".dagger2sample.dagger.DaggerActivity">
-        </activity>
-
-        <activity android:name=".hooksample.HookActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity android:name=".hooksample.HookActivity">
+
         </activity>
 
         <activity android:name=".proxysample.ProxySampleActivity">

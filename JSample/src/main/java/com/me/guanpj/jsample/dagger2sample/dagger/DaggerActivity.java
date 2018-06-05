@@ -5,14 +5,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import com.me.guanpj.jsample.R;
+import com.me.guanpj.jsample.dagger2sample.dagger.component.DaggerShoppingCartComponent;
+import com.me.guanpj.jsample.dagger2sample.dagger.component.DaggerUserComponent;
+import com.me.guanpj.jsample.dagger2sample.dagger.component.UserComponent;
+import com.me.guanpj.jsample.dagger2sample.dagger.module.ShoppingCartModule;
+import com.me.guanpj.jsample.dagger2sample.dagger.module.UserModule;
 
 import javax.inject.Inject;
 
 public class DaggerActivity extends AppCompatActivity {
     @Inject
-    UserModel userModel;
+    UserBean userBean;
     @Inject
-    ShoppingCartModel shoppingCartModel;
+    ShoppingCartBean shoppingCartBean;
     private UserComponent userComponent;
 
     @Override
@@ -31,9 +36,9 @@ public class DaggerActivity extends AppCompatActivity {
                 .inject(this);
 
         ((TextView) findViewById(R.id.text_view)).setText(
-                userModel.getName() + "\n"
-                        + userModel.getAge() + "\n"
-                        + shoppingCartModel.getTotal());
+                userBean.getName() + "\n"
+                        + userBean.getAge() + "\n"
+                        + shoppingCartBean.getTotal());
 
     }
 }
