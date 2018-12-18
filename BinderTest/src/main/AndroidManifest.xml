@@ -16,18 +16,18 @@
             </intent-filter>
         </activity>
 
-        <!--<service android:name=".MyServer">
+        <service android:name=".MyServer">
             <intent-filter>
                 <action android:name="com.longrise.jie.myapplication" />
             </intent-filter>
-        </service>-->
+        </service>
 
-        <service android:name=".MyServer"
+        <!--<service android:name=".MyServer"
                  android:process=":remote">
             <intent-filter>
                 <action android:name="com.longrise.jie.myapplication"/>
             </intent-filter>
-        </service>
+        </service>-->
     </application>
 
 </manifest>

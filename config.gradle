@@ -7,7 +7,7 @@ ext {
     versionName = '1.0'
     supportLibraryVersion = '24.2.1'
     retrofitVersion = '2.1.0'
-    okhttpVersion = '3.4.2'
+    okhttpVersion = '3.8.1'
 
     dependencies = [
             appCompat: "com.android.support:appcompat-v7:$supportLibraryVersion",
@@ -15,8 +15,6 @@ ext {
             cardView: "com.android.support:cardview-v7:$supportLibraryVersion",
             recyclerView: "com.android.support:recyclerview-v7:$supportLibraryVersion",
             jUnit: 'junit:junit:4.12',
-            mockito: 'org.mockito:mockito-core:1.10.19', // https://github.com/mockito/mockito
-            robolectric: 'org.robolectric:robolectric:3.1.4', // https://github.com/robolectric/robolectric
             // https://github.com/square/retrofit
             retrofit: "com.squareup.retrofit2:retrofit:$retrofitVersion",
             retrofitConverterGson: "com.squareup.retrofit2:converter-gson:$retrofitVersion",

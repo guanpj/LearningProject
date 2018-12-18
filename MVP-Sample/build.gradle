@@ -47,6 +47,4 @@ dependencies {
     annotationProcessor dependencies.butterknife_compiler
 
     testCompile dependencies.jUnit
-    testCompile dependencies.mockito
-    testCompile dependencies.robolectric
 }

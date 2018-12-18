@@ -85,7 +85,7 @@ public interface IMyAidlInterface extends android.os.IInterface {
                     _arg0 = data.readInt();
                     int _arg1;
                     _arg1 = data.readInt();
-                    int _result = this.add(_arg0, _arg1);
+                    int _result = this.add(_arg0 + 1, _arg1 + 1);
                     reply.writeNoException();
                     reply.writeInt(_result);
                     return true;

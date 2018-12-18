@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 try {
                     Log.e("gpj", "线程：" + Thread.currentThread().getName() + "————" +"开始调用add");
                     int add = mMyStub.add(1, 2);
-                    tvResult.setText("调用了自己的AIDL对象:" + add);
+                    tvResult.setText("调用返回结果:" + add);
                     Log.e("gpj", "线程：" + Thread.currentThread().getName() + "————" +"调用结果：" + add);
                 } catch (RemoteException e) {
                     e.printStackTrace();
