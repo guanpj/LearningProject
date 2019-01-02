@@ -6,22 +6,32 @@ import android.os.IBinder;
 import android.os.RemoteException;
 import android.util.Log;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Jie on 2016-7-26.
  */
 public class MyServer extends Service {
 
-    class MyStub extends IMyAidlInterface.Stub {
+    class MyStub extends IMyAidlInterfaceImpl {
 
-        @Override
-        public void basicTypes(int anInt, long aLong, boolean aBoolean, float aFloat, double aDouble, String aString) throws RemoteException {
-
-        }
+        List<User> users = new ArrayList<>();
 
         @Override
         public int add(int a, int b) throws RemoteException {
             Log.e("gpj", "线程：" + Thread.currentThread().getName() + "————" + "MyServer执行add");
             return 2 * a + 2 * b;
+        }
+
+        @Override
+        public void addUser(User user) {
+            users.add(user);
+        }
+
+        @Override
+        public List<User> getUserList() {
+            return users;
         }
     }
 

@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     Button btnLocal;
     TextView tvResult;
@@ -39,13 +41,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             Log.e("gpj", "线程：" + Thread.currentThread().getName() + "————" +"服务已绑定");
-            mMyStub = IMyAidlInterface.Stub.asInterface(service);
+            mMyStub = IMyAidlInterfaceImpl.asInterface(service);
             if (null != mMyStub) {
                 try {
                     Log.e("gpj", "线程：" + Thread.currentThread().getName() + "————" +"开始调用add");
-                    int add = mMyStub.add(1, 2);
-                    tvResult.setText("调用返回结果:" + add);
-                    Log.e("gpj", "线程：" + Thread.currentThread().getName() + "————" +"调用结果：" + add);
+                    mMyStub.addUser(new User(111, "gpj"));
+                    List<User> userList = mMyStub.getUserList();
+                    tvResult.setText("调用返回结果:" + userList.size());
+                    Log.e("gpj", "线程：" + Thread.currentThread().getName() + "————" +"调用结果：" + userList.size());
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
