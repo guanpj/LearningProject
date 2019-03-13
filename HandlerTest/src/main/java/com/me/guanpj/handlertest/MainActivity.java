@@ -1,22 +1,21 @@
 package com.me.guanpj.handlertest;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-
-import java.util.UUID;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Handler handler;
+    com.me.guanpj.handlertest.MyHandler handler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Looper.prepare();
         Looper.loop();
-        handler = new Handler() {
+        handler = new com.me.guanpj.handlertest.MyHandler() {
             @Override
             public void handleMessage(Message msg) {
                 Log.e("gpj", Thread.currentThread().getName() + "--receiver--" + msg.toString());
@@ -25,9 +24,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.button).setOnClickListener(this);
     }
 
+    class MyHandler extends android.os.Handler {
+    }
+
     @Override
     public void onClick(View v) {
-        for (int i = 0; i < 10; i++) {
+        MyHandler handler = new MyHandler();
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(MainActivity.this, "aaa", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        /*for (int i = 0; i < 10; i++) {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -48,6 +58,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 }
             }).start();
-        }
+        }*/
     }
 }

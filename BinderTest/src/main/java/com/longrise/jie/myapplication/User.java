@@ -4,8 +4,10 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class User implements Parcelable {
-    int id;
-    String name;
+    public int id;
+    public String name;
+
+    public User() {}
 
     public User(int id, String name) {
         this.id = id;

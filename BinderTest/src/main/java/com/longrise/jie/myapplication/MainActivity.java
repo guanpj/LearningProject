@@ -18,7 +18,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     Button btnLocal;
     TextView tvResult;
-    IMyAidlInterface mMyStub;
+    UserManager mMyStub;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             Log.e("gpj", "线程：" + Thread.currentThread().getName() + "————" +"服务已绑定");
-            mMyStub = IMyAidlInterfaceImpl.asInterface(service);
+            mMyStub = UserManagerImpl.asInterface(service);
             if (null != mMyStub) {
                 try {
                     Log.e("gpj", "线程：" + Thread.currentThread().getName() + "————" +"开始调用add");

@@ -7,7 +7,7 @@ package com.me.guanpj.handlertest;
 public class Message {
     public int what;
     public Object obj;
-    public Handler target;
+    public MyHandler target;
 
     @Override
     public String toString() {

@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class MyServer extends Service {
 
-    class MyStub extends IMyAidlInterfaceImpl {
+    class MyStub extends UserManagerImpl {
 
         List<User> users = new ArrayList<>();
 

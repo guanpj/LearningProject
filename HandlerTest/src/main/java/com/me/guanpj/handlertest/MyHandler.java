@@ -4,11 +4,11 @@ package com.me.guanpj.handlertest;
  * Created by Jie on 2017/8/5.
  */
 
-public class Handler {
+public class MyHandler {
     MessageQueue mQueue;
     Looper mLooper;
 
-    public Handler() {
+    public MyHandler() {
         mLooper = Looper.myLooper();
         if (mLooper == null) {
             throw new RuntimeException("Can't create handler inside thread that has not called Looper.prepare()!");

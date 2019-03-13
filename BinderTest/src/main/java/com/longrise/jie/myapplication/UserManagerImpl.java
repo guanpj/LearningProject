@@ -8,29 +8,29 @@ import java.util.List;
 /**
  * Local-side IPC implementation mLocalStub class.
  */
-public abstract class IMyAidlInterfaceImpl extends Binder implements IMyAidlInterface {
+public abstract class UserManagerImpl extends Binder implements UserManager {
     /**
      * Construct the mLocalStub at attach it to the interface.
      */
-    public IMyAidlInterfaceImpl() {
+    public UserManagerImpl() {
         this.attachInterface(this, DESCRIPTOR);
     }
 
     /**
-     * Cast an IBinder object into an com.longrise.jie.myapplication.IMyAidlInterface interface,
+     * Cast an IBinder object into an com.longrise.jie.myapplication.UserManager interface,
      * generating a proxy if needed.
      */
-    public static IMyAidlInterface asInterface(android.os.IBinder obj) {
+    public static UserManager asInterface(android.os.IBinder obj) {
         if ((obj == null)) {
             return null;
         }
         android.os.IInterface iin = obj.queryLocalInterface(DESCRIPTOR);
-        if (((iin != null) && (iin instanceof IMyAidlInterface))) {
+        if (((iin != null) && (iin instanceof UserManager))) {
             Log.e("gpj", "线程：" + Thread.currentThread().getName() + "————" + "返回本地对象");
-            return ((IMyAidlInterface) iin);
+            return ((UserManager) iin);
         }
         Log.e("gpj", "线程：" + Thread.currentThread().getName() + "————" + "返回远程对象");
-        return new IMyAidlInterfaceImpl.Proxy(obj);
+        return new UserManagerImpl.Proxy(obj);
     }
 
     @Override
@@ -84,7 +84,7 @@ public abstract class IMyAidlInterfaceImpl extends Binder implements IMyAidlInte
         return super.onTransact(code, data, reply, flags);
     }
 
-    private static class Proxy implements IMyAidlInterface {
+    private static class Proxy implements UserManager {
         private android.os.IBinder mRemote;
 
         Proxy(android.os.IBinder remote) {
@@ -110,7 +110,7 @@ public abstract class IMyAidlInterfaceImpl extends Binder implements IMyAidlInte
                 _data.writeInt(a);
                 _data.writeInt(b);
                 Log.e("gpj", "线程：" + Thread.currentThread().getName() + "————" + "调用binder开始通讯");
-                mRemote.transact(IMyAidlInterfaceImpl.TRANSACTION_add, _data, _reply, 0);
+                mRemote.transact(UserManagerImpl.TRANSACTION_add, _data, _reply, 0);
                 _reply.readException();
                 _result = _reply.readInt();
             } finally {
@@ -133,7 +133,7 @@ public abstract class IMyAidlInterfaceImpl extends Binder implements IMyAidlInte
                    _data.writeInt(0);
                }
                 Log.e("gpj", "线程：" + Thread.currentThread().getName() + "————" + "调用binder开始通讯");
-                mRemote.transact(IMyAidlInterfaceImpl.TRANSACTION_addUser, _data, _reply, 0);
+                mRemote.transact(UserManagerImpl.TRANSACTION_addUser, _data, _reply, 0);
                 _reply.readException();
             } finally {
                 _reply.recycle();
@@ -148,7 +148,7 @@ public abstract class IMyAidlInterfaceImpl extends Binder implements IMyAidlInte
             List<User> _result;
             try {
                 _data.writeInterfaceToken(DESCRIPTOR);
-                mRemote.transact(IMyAidlInterfaceImpl.TRANSACTION_getUserList, _data, _reply, 0);
+                mRemote.transact(UserManagerImpl.TRANSACTION_getUserList, _data, _reply, 0);
                 _reply.readException();
                 _result = _reply.createTypedArrayList(User.CREATOR);
             } finally {
