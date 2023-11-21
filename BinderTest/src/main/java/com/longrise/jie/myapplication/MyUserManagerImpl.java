@@ -8,11 +8,11 @@ import java.util.List;
 /**
  * Local-side IPC implementation mLocalStub class.
  */
-public abstract class UserManagerImpl extends Binder implements UserManager {
+public abstract class MyUserManagerImpl extends Binder implements MyUserManager {
     /**
      * Construct the mLocalStub at attach it to the interface.
      */
-    public UserManagerImpl() {
+    public MyUserManagerImpl() {
         this.attachInterface(this, DESCRIPTOR);
     }
 
@@ -20,17 +20,17 @@ public abstract class UserManagerImpl extends Binder implements UserManager {
      * Cast an IBinder object into an com.longrise.jie.myapplication.UserManager interface,
      * generating a proxy if needed.
      */
-    public static UserManager asInterface(android.os.IBinder obj) {
+    public static MyUserManager asInterface(android.os.IBinder obj) {
         if ((obj == null)) {
             return null;
         }
         android.os.IInterface iin = obj.queryLocalInterface(DESCRIPTOR);
-        if (((iin != null) && (iin instanceof UserManager))) {
+        if (((iin != null) && (iin instanceof MyUserManager))) {
             Log.e("gpj", "线程：" + Thread.currentThread().getName() + "————" + "返回本地对象");
-            return ((UserManager) iin);
+            return ((MyUserManager) iin);
         }
         Log.e("gpj", "线程：" + Thread.currentThread().getName() + "————" + "返回远程对象");
-        return new UserManagerImpl.Proxy(obj);
+        return new MyUserManagerImpl.Proxy(obj);
     }
 
     @Override
@@ -84,7 +84,7 @@ public abstract class UserManagerImpl extends Binder implements UserManager {
         return super.onTransact(code, data, reply, flags);
     }
 
-    private static class Proxy implements UserManager {
+    private static class Proxy implements MyUserManager {
         private android.os.IBinder mRemote;
 
         Proxy(android.os.IBinder remote) {
@@ -110,7 +110,7 @@ public abstract class UserManagerImpl extends Binder implements UserManager {
                 _data.writeInt(a);
                 _data.writeInt(b);
                 Log.e("gpj", "线程：" + Thread.currentThread().getName() + "————" + "调用binder开始通讯");
-                mRemote.transact(UserManagerImpl.TRANSACTION_add, _data, _reply, 0);
+                mRemote.transact(MyUserManagerImpl.TRANSACTION_add, _data, _reply, 0);
                 _reply.readException();
                 _result = _reply.readInt();
             } finally {
@@ -133,7 +133,7 @@ public abstract class UserManagerImpl extends Binder implements UserManager {
                    _data.writeInt(0);
                }
                 Log.e("gpj", "线程：" + Thread.currentThread().getName() + "————" + "调用binder开始通讯");
-                mRemote.transact(UserManagerImpl.TRANSACTION_addUser, _data, _reply, 0);
+                mRemote.transact(MyUserManagerImpl.TRANSACTION_addUser, _data, _reply, 0);
                 _reply.readException();
             } finally {
                 _reply.recycle();
@@ -148,7 +148,7 @@ public abstract class UserManagerImpl extends Binder implements UserManager {
             List<User> _result;
             try {
                 _data.writeInterfaceToken(DESCRIPTOR);
-                mRemote.transact(UserManagerImpl.TRANSACTION_getUserList, _data, _reply, 0);
+                mRemote.transact(MyUserManagerImpl.TRANSACTION_getUserList, _data, _reply, 0);
                 _reply.readException();
                 _result = _reply.createTypedArrayList(User.CREATOR);
             } finally {

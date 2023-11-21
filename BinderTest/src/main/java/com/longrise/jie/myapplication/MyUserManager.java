@@ -7,7 +7,7 @@ package com.longrise.jie.myapplication;
 
 import java.util.List;
 
-public interface UserManager extends android.os.IInterface {
+public interface MyUserManager extends android.os.IInterface {
     static final java.lang.String DESCRIPTOR = "com.longrise.jie.myapplication.UserManager";
 
     int TRANSACTION_add = (android.os.IBinder.FIRST_CALL_TRANSACTION + 0);

@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Looper.prepare();
-        Looper.loop();
+        //Looper.loop();
         handler = new com.me.guanpj.handlertest.MyHandler() {
             @Override
             public void handleMessage(Message msg) {
@@ -25,17 +25,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     class MyHandler extends android.os.Handler {
+        @Override
+        public void handleMessage(android.os.Message msg) {
+            if (msg.what == 1) {
+                Toast.makeText(MainActivity.this, "bbb", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     @Override
     public void onClick(View v) {
         MyHandler handler = new MyHandler();
-        handler.post(new Runnable() {
+        handler.sendEmptyMessage(1);
+        /*handler.post(new Runnable() {
             @Override
             public void run() {
                 Toast.makeText(MainActivity.this, "aaa", Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
 
         /*for (int i = 0; i < 10; i++) {
             new Thread(new Runnable() {
